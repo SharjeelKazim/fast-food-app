@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images, offers } from "@/constants";
-import CartButton from "../components/CartButton";
+import CartButton from "../../components/CartButton";
 
 export default function Index() {
   return (
