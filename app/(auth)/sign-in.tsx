@@ -12,6 +12,7 @@ const SignIn = () => {
         const { email, password } = form;
 
         if(!email || !password) return Alert.alert('Error', 'Please enter valid email address & password.');
+        
 
         setIsSubmitting(true)
 
@@ -55,6 +56,10 @@ const SignIn = () => {
                 <Link href="/sign-up" className="base-bold text-primary">
                     Sign Up
                 </Link>
+                <link href="/sign-in" className="base-bold text-primary">
+                
+                
+                </link>
             </View>
         </View>
     )
