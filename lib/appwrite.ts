@@ -1,12 +1,12 @@
 import { CreateUserPrams, GetMenuParams, SignInParams } from "@/type";
 import {
-    Account,
-    Avatars,
-    Client,
-    Databases,
-    ID,
-    Query,
-    Storage,
+  Account,
+  Avatars,
+  Client,
+  Databases,
+  ID,
+  Query,
+  Storage,
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -31,6 +31,8 @@ export const account = new Account(client);
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 const avatars = new Avatars(client);
+
+
 
 export const createUser = async ({
   email,
@@ -115,3 +117,14 @@ export const getCategories = async () => {
     throw new Error(e as string);
   }
 };
+
+const testConnection = async () => {
+  try {
+    const user = await account.get();
+    console.log("Connected ✅ User:", user);
+  } catch (err) {
+    console.error("Not connected ❌", err);
+  }
+};
+
+testConnection();
