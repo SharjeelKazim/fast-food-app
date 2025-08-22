@@ -1,4 +1,4 @@
-import { CreateUserPrams, GetMenuParams, SignInParams } from "@/type";
+import { CreateUserParams, GetMenuParams, SignInParams } from "@/type";
 import {
     Account,
     Avatars,
@@ -33,7 +33,7 @@ export const databases = new Databases(client);
 export const storage = new Storage(client);
 const avatars = new Avatars(client);
 
-export const createUser = async ({ email, password, name }: CreateUserPrams) => {
+export const createUser = async ({ email, password, name }: CreateUserParams) => {
     try {
         const newAccount = await account.create(ID.unique(), email, password, name)
         if(!newAccount) throw Error;
