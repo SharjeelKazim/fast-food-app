@@ -13,7 +13,7 @@ const SignIn = () => {
     const submit = async () => {
         const { email, password } = form;
 
-        if(!email || !password) return Alert.alert('Error', 'Please enter valid email address & password.');
+        if(!form.email || !form.password) return Alert.alert('Error', 'Please enter valid email address & password.');
 
         setIsSubmitting(true)
 
