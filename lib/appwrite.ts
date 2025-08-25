@@ -13,6 +13,8 @@ export const appwriteConfig = {
   menuCustomizationsCollectionId: "68a342870028b02b2307",
   bucketId: "68a3460400287d18b7bb",
 };
+console.log("Endpoint:", appwriteConfig.endpoint);
+console.log("Project ID:", appwriteConfig.projectId);
 export const client = new Client();
 
 client

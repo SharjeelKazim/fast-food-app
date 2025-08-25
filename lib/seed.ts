@@ -130,7 +130,7 @@ async function seed(): Promise<void> {
                 rating: item.rating,
                 calories: item.calories,
                 protein: item.protein,
-                categories: categoryMap[item.category_name],
+                categories: [categoryMap[item.category_name]],
             }
         );
 
@@ -143,8 +143,8 @@ async function seed(): Promise<void> {
                 appwriteConfig.menuCustomizationsCollectionId,
                 ID.unique(),
                 {
-                    menu: doc.$id,
-                    customizations: customizationMap[cusName],
+                    menu: [doc.$id],
+      customizations: [customizationMap[cusName]],
                 }
             );
         }
