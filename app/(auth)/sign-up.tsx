@@ -22,7 +22,7 @@ const SignUp = () => {
       await createUser({ email, password, name });
 
       // ✅ Signup success → redirect to Sign In page
-      router.replace("/sign-in");
+      router.replace("/");
 
       Alert.alert(
         "Success",
