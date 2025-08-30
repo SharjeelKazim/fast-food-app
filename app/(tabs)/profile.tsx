@@ -49,12 +49,21 @@ export default function ProfileScreen() {
           </View>
         </View> */}
 
-        {/* Phone */}
+        {/* UserID */}
         <View className="flex-row items-center top-16">
           <MaterialCommunityIcons name="card-account-details" size={22} color="#000" />
           <View className="ml-4">
             <Text className="text-xs text-gray-600">User Id</Text>
             <Text className="text-base font-medium">{user?.$databaseId || "Not Provided"}</Text>
+          </View>
+        </View>
+
+         {/* CreatedAt */}
+        <View className="flex-row items-center top-16">
+          <MaterialCommunityIcons name="clock-outline" size={22} color="#000" />
+          <View className="ml-4">
+            <Text className="text-xs text-gray-600">Created At</Text>
+            <Text className="text-base font-medium">{user?.$createdAt || "Not Provided"}</Text>
           </View>
         </View>
 
