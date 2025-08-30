@@ -21,8 +21,9 @@ const SignUp = () => {
     try {
       await createUser({ email, password, name });
 
+
       // ✅ Signup success → redirect to Sign In page
-      router.replace("/");
+router.replace("/");
 
       Alert.alert(
         "Success",

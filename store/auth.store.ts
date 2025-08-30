@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/appwrite";
+import { account, getCurrentUser } from "@/lib/appwrite";
 import { User } from '@/type';
 import { create } from 'zustand';
 
@@ -12,6 +12,7 @@ type AuthState = {
     setLoading: (loading: boolean) => void;
 
     fetchAuthenticatedUser: () => Promise<void>;
+    logout: () => Promise<void>; // 👈 new
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -21,23 +22,34 @@ const useAuthStore = create<AuthState>((set) => ({
 
     setIsAuthenticated: (value) => set({ isAuthenticated: value }),
     setUser: (user) => set({ user }),
-    setLoading: (value) => set({isLoading: value}),
+    setLoading: (value) => set({ isLoading: value }),
 
     fetchAuthenticatedUser: async () => {
-        set({isLoading: true});
+        set({ isLoading: true });
 
         try {
             const user = await getCurrentUser();
 
-           if(user) set ({isAuthenticated: true, user: user as unknown as User})
-            else set( { isAuthenticated: false, user: null } );
+            if (user) set({ isAuthenticated: true, user: user as unknown as User });
+            else set({ isAuthenticated: false, user: null });
         } catch (e) {
-            console.log('fetchAuthenticatedUser error', e);
-            set({ isAuthenticated: false, user: null })
+            console.log("fetchAuthenticatedUser error", e);
+            set({ isAuthenticated: false, user: null });
         } finally {
             set({ isLoading: false });
         }
-    }
-}))
+    },
+
+    logout: async () => {
+        try {
+            await account.deleteSession("current"); // ❌ kill current session
+        } catch (err) {
+            console.log("Logout error:", err);
+        } finally {
+            // Reset state
+            set({ isAuthenticated: false, user: null });
+        }
+    },
+}));
 
 export default useAuthStore;
