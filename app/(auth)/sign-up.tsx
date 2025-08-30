@@ -13,7 +13,10 @@ const SignUp = () => {
     const { name, email, password } = form;
 
     if (!name || !email || !password) {
-      return Alert.alert("Error", "Please enter valid email address & password.");
+      return Alert.alert(
+        "Error",
+        "Please enter valid email address & password."
+      );
     }
 
     setIsSubmitting(true);
@@ -21,9 +24,8 @@ const SignUp = () => {
     try {
       await createUser({ email, password, name });
 
-
       // ✅ Signup success → redirect to Sign In page
-router.replace("/");
+      router.replace("/");
 
       Alert.alert(
         "Success",
@@ -54,7 +56,9 @@ router.replace("/");
       <CustomInput
         placeholder="Enter your password"
         value={form.password}
-        onChangeText={(text) => setForm((prev) => ({ ...prev, password: text }))}
+        onChangeText={(text) =>
+          setForm((prev) => ({ ...prev, password: text }))
+        }
         label="Password"
         secureTextEntry={true}
       />

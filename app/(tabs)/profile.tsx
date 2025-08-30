@@ -40,6 +40,24 @@ export default function ProfileScreen() {
           </View>
         </View>
 
+         {/* Email */}
+        <View className="flex-row items-center top-20">
+          <MaterialCommunityIcons name="email" size={22} color="#000" />
+          <View className="ml-4">
+            <Text className="text-xs text-gray-600">E-Mail</Text>
+            <Text className="text-base font-medium">{user?.email || "Not Provided"}</Text>
+          </View>
+        </View>
+
+        {/* UserID */}
+        <View className="flex-row items-center top-28">
+          <MaterialCommunityIcons name="card-account-details" size={22} color="#000" />
+          <View className="ml-4">
+            <Text className="text-xs text-gray-600">User Id</Text>
+            <Text className="text-base font-medium">{user?.$databaseId || "Not Provided"}</Text>
+          </View>
+        </View>
+
         {/* Department */}
         {/* <View className="flex-row items-center top-7">
           <MaterialCommunityIcons name="office-building" size={22} color="#000" />
@@ -49,32 +67,9 @@ export default function ProfileScreen() {
           </View>
         </View> */}
 
-        {/* UserID */}
-        <View className="flex-row items-center top-16">
-          <MaterialCommunityIcons name="card-account-details" size={22} color="#000" />
-          <View className="ml-4">
-            <Text className="text-xs text-gray-600">User Id</Text>
-            <Text className="text-base font-medium">{user?.$databaseId || "Not Provided"}</Text>
-          </View>
-        </View>
+        
 
-         {/* CreatedAt */}
-        <View className="flex-row items-center top-16">
-          <MaterialCommunityIcons name="clock-outline" size={22} color="#000" />
-          <View className="ml-4">
-            <Text className="text-xs text-gray-600">Created At</Text>
-            <Text className="text-base font-medium">{user?.$createdAt || "Not Provided"}</Text>
-          </View>
-        </View>
-
-        {/* Email */}
-        <View className="flex-row items-center top-20">
-          <MaterialCommunityIcons name="email" size={22} color="#000" />
-          <View className="ml-4">
-            <Text className="text-xs text-gray-600">E-Mail</Text>
-            <Text className="text-base font-medium">{user?.email || "Not Provided"}</Text>
-          </View>
-        </View>
+       
 
         {/* Logout Button */}
         <View className="mt-auto px-6 top-56">
