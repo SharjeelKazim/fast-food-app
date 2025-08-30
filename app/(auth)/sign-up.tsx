@@ -4,7 +4,7 @@ import { createUser } from "@/lib/appwrite";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import Toast from "react-native-toast-message"; // 👈 import toast
+import Toast from "react-native-toast-message";
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +37,7 @@ const SignUp = () => {
     } catch (error: any) {
       Toast.show({
         type: "error",
-        text1: "Signup Failed",
+        text1: "Signup Failed ❌",
         text2: error.message,
       });
     } finally {
