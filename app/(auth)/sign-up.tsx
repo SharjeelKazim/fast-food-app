@@ -3,7 +3,8 @@ import CustomInput from "@/components/CustomInput";
 import { createUser } from "@/lib/appwrite";
 import { Link, router } from "expo-router";
 import { useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import Toast from "react-native-toast-message"; // 👈 import toast
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,10 +14,11 @@ const SignUp = () => {
     const { name, email, password } = form;
 
     if (!name || !email || !password) {
-      return Alert.alert(
-        "Error",
-        "Please enter valid email address & password."
-      );
+      return Toast.show({
+        type: "error",
+        text1: "Invalid Input",
+        text2: "Please enter valid name, email and password.",
+      });
     }
 
     setIsSubmitting(true);
@@ -27,12 +29,17 @@ const SignUp = () => {
       // ✅ Signup success → redirect to Sign In page
       router.replace("/");
 
-      Alert.alert(
-        "Success",
-        "Account created successfully. Please sign in to continue."
-      );
+      Toast.show({
+        type: "success",
+        text1: "Account Created 🎉",
+        text2: "Please sign in to continue.",
+      });
     } catch (error: any) {
-      Alert.alert("Error", error.message);
+      Toast.show({
+        type: "error",
+        text1: "Signup Failed",
+        text2: error.message,
+      });
     } finally {
       setIsSubmitting(false);
     }
